@@ -1,0 +1,73 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: demo skeleton",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/demo/demo_skeleton.py",
+            "console": "integratedTerminal",
+            "justMyCode": false, 
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}",
+            },
+            "args": [
+                "./demo/demo_skeleton.mp4",
+                "./demo/out_demo_skeleton.mp4",
+                "--config=configs/skeleton/stgcn/stgcn_8xb16-joint-u100-80e_ntu120-xsub-keypoint-2d.py",
+                "--checkpoint=stgcn_8xb16-joint-u100-80e_ntu120-xsub-keypoint-2d_20221129-612416c6.pth",
+            ]
+        },
+        {
+            "name": "Python: export SlowFast",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/tools/deployment/export_onnx_stdet.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "args": [
+                "configs/detection/slowfast/slowfast_kinetics400-pretrained-r50_8xb16-4x16x1-20e_ava21-rgb.py",
+                "slowfast_kinetics400-pretrained-r50_8xb16-4x16x1-20e_ava21-rgb_20220906-5180ea3c.pth",
+                "--output_file=slowfast_kinetics400-pretrained-r50_8xb16-4x16x1-20e_ava21-rgb_20220906-5180ea3c.onnx",
+            ]
+        },
+        {
+            "name": "Python: export st-det base VideoMAE",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/tools/deployment/export_onnx_stdet.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "args": [
+                "configs/detection/videomae/vit-base-p16_videomae-k400-pre_8xb8-16x4x1-20e-adamw_ava-kinetics-rgb.py",
+                "vit-base-p16_videomae-k400-pre_16x4x1_kinetics-400_20221013-860a3cd3.pth",
+                "--output_file=vit-base-p16_videomae-k400-pre_16x4x1_kinetics-400_20221013-860a3cd.onnx",
+            ]
+        },
+        {
+            "name": "Python: export stgcn",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/tools/deployment/export_onnx_gcn.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "args": [
+                "configs/skeleton/stgcn/stgcn_8xb16-joint-u100-80e_ntu120-xsub-keypoint-2d.py",
+                "stgcn_8xb16-joint-u100-80e_ntu120-xsub-keypoint-2d_20221129-612416c6.pth",
+                "--output_file=stgcn_8xb16-joint-u100-80e_ntu120-xsub-keypoint-2d_20221129-612416c6.onnx",
+            ]
+        }
+    ]
+}

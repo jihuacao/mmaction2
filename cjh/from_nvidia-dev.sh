@@ -1,3 +1,4 @@
+# FROM payforsins/nvidia-dev:nvidia_dev_cuda118-dev-1.0.1-e0d8f9f-uncommited
 apt update
 apt -y install libopencv-dev
 pip3 install pyproject==1.3.1 wheel==0.40.0
@@ -17,3 +18,5 @@ pip3 install einops==0.7.0
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 pip3 install numpy==1.22.1
 pip3 install matplotlib==3.8.2
+pip3 install moviepy==1.0.3
+pip3 install mmpose==1.3.1
